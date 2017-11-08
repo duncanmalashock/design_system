@@ -1,0 +1,35 @@
+@import "space";
+
+@each $key, $value in $spaces {
+  .container.container--inset-#{$key} {
+    padding: $value;
+  }
+}
+
+@each $key, $value in $spaces {
+  .container.container--inline-#{$key} {
+    margin: -$value / 2;
+    & > .container__item {
+      display: inline-block;
+      vertical-align: middle;
+      margin: $value / 2;
+    }
+  }
+}
+
+@each $key, $value in $spaces {
+  .container.container--inline-stack-#{$key} {
+    margin-bottom: -$value / 2;
+    & > .container__item {
+      margin-bottom: $value / 2;
+    }
+  }
+}
+
+@each $key, $value in $spaces {
+  .container.container--stack-#{$key} {
+    & > .container__item:not(:last-child) {
+      margin-bottom: $value;
+    }
+  }
+}
