@@ -2,6 +2,9 @@ module Main exposing (..)
 
 import Html exposing (Html, div, text)
 import Html.Attributes exposing (class)
+import Layout.Space as Space exposing (Space(..))
+import Layout.Grid as Grid exposing (GridItem(..))
+import Layout.Container as Container
 
 
 main : Program Never Model Msg
@@ -47,4 +50,10 @@ update msg model =
 view : Model -> Html Msg
 view model =
     div [ class "app" ]
-        [ text "Hello world!" ]
+        [ Grid.grid
+            ( 8, SpaceM, SpaceZero )
+            [ GridItem 1 <| text "a"
+            , GridItem 1 <| text "b"
+            , GridItem 1 <| text "c"
+            ]
+        ]
