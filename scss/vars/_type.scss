@@ -1,11 +1,13 @@
 $type-faces: (
   sans-1: (
     face: ("Lato", arial, sans-serif),
+    weight: 400,
     top-crop: 9,
     bottom-crop: 7
   ),
   sans-2: (
     face: ("Roboto Sans", arial, sans-serif),
+    weight: 800,
     top-crop: 7,
     bottom-crop: 10
   )
@@ -14,11 +16,6 @@ $type-faces: (
 $type-sizes: (
   m: 1rem,
   l: 1.4rem
-);
-
-$type-weights: (
-  book: 400,
-  bold: 800
 );
 
 $type-leadings: (
@@ -39,7 +36,6 @@ $type-settings: (
     generate-type-setting(
       sans-1,
       (size: get($type-sizes, m),
-      weight: get($type-weights, book),
       leading: get($type-leadings, loose)
       )
     )
@@ -48,7 +44,6 @@ $type-settings: (
     generate-type-setting(
       sans-2,
       (size: get($type-sizes, l),
-      weight: get($type-weights, bold),
       leading: get($type-leadings, tight)
       )
     )
