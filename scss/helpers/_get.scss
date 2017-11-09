@@ -1,0 +1,6 @@
+@function get($map, $value) {
+  @if not map-has-key($map, $value) {
+    @error "Couldn't find `#{$value}` in #{$map}.";
+  }
+  @return map-get($map, $value);
+}
