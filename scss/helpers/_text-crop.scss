@@ -1,13 +1,10 @@
-@mixin text-crop($line-height: 1.3, $top-adjustment: 0px, $bottom-adjustment: 0px) {
-  $top-crop: 13;
-  $bottom-crop: 10;
+@mixin text-crop($line-height, $top-crop, $bottom-crop, $top-adjustment: 0px, $bottom-adjustment: 0px) {
   $crop-font-size: 50;
   $crop-line-height: 1.2;
 
   $dynamic-top-crop: max(($top-crop + ($line-height - $crop-line-height) * ($crop-font-size / 2)), 0) / $crop-font-size;
   $dynamic-bottom-crop: max(($bottom-crop + ($line-height - $crop-line-height) * ($crop-font-size / 2)), 0) / $crop-font-size;
 
-  line-height: $line-height;
   &::before,
   &::after {
     content: '';

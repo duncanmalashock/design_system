@@ -1,0 +1,77 @@
+$type-faces: (
+  sans-1: (
+    face: ("Lato", arial, sans-serif),
+    top-crop: 9,
+    bottom-crop: 7
+  ),
+  sans-2: (
+    face: ("Roboto Sans", arial, sans-serif),
+    top-crop: 7,
+    bottom-crop: 10
+  )
+);
+
+$type-sizes: (
+  m: 1rem,
+  l: 1.4rem
+);
+
+$type-weights: (
+  book: 400,
+  bold: 800
+);
+
+$type-leadings: (
+  solid: 1.0,
+  tight: 1.15,
+  loose: 1.4
+);
+
+@function generate-type-setting($face-key, $merge-into-map) {
+  @return map-merge(
+    get($type-faces, $face-key),
+    $merge-into-map
+  )
+}
+
+$type-settings: (
+  body-normal: (
+    generate-type-setting(
+      sans-1,
+      (size: get($type-sizes, m),
+      weight: get($type-weights, book),
+      leading: get($type-leadings, loose)
+      )
+    )
+  ),
+  header-normal: (
+    generate-type-setting(
+      sans-2,
+      (size: get($type-sizes, l),
+      weight: get($type-weights, bold),
+      leading: get($type-leadings, tight)
+      )
+    )
+  )
+);
+
+$type-keys: (
+  font-family: "face",
+  font-size: "size",
+  font-weight: "weight",
+  line-height: "leading"
+);
+
+@mixin type($setting, $map: $type-settings, $crop:true) {
+  $type-setting: get($map, $setting);
+  @each $key, $value in $type-keys {
+   #{$key}: get($type-setting, $value);
+  }
+  @if $crop {
+    @include text-crop(
+      $line-height: get($type-setting, "leading"),
+      $top-crop: get($type-setting, "top-crop"),
+      $bottom-crop: get($type-setting, "bottom-crop")
+    );
+  }
+}

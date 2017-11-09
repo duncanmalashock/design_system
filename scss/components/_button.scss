@@ -1,0 +1,11 @@
+$button-background-color: $teal;
+
+.button {
+  display: block;
+  width: 100%;
+  text-align: center;
+  border: 0;
+  background: $button-background-color;
+  padding: $space-m;
+  @include type(body-normal);
+}
