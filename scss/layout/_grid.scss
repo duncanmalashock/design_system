@@ -8,12 +8,13 @@ $grid-columns-max: 16;
     display: grid;
     grid-template-columns: repeat($i, 1fr);
     align-items: center;
-    .grid__item {
-      @for $j from $grid-columns-min through $i {
-        &.grid__item--#{$j}-columns-wide {
-          grid-column-end: span $j;
-        }
-      }
+  }
+}
+
+.grid__item {
+  @for $j from $grid-columns-min through $grid-columns-max {
+    &.grid__item--#{$j}-columns-wide {
+      grid-column-end: span $j;
     }
   }
 }
