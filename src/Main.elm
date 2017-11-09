@@ -1,10 +1,10 @@
 module Main exposing (..)
 
+import UI.Components as UI
 import Html exposing (Html, div, text)
 import Html.Attributes exposing (class)
 import Layout.Space as Space exposing (Space(..))
 import Layout.Grid as Grid exposing (GridItem(..))
-import Layout.Container as Container
 
 
 main : Program Never Model Msg
@@ -52,7 +52,7 @@ view model =
     div [ class "app" ]
         [ Grid.grid
             ( 8, SpaceM, SpaceZero )
-            [ GridItem 1 <| text "a"
+            [ GridItem 1 <| UI.button "Click me!"
             , GridItem 1 <| text "b"
             , GridItem 1 <| text "c"
             ]
