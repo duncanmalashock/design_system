@@ -1,4 +1,4 @@
-@import "space";
+@import "vars/space";
 
 @each $key, $value in $spaces {
   .container.container--inset-#{$key} {
