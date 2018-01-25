@@ -1,11 +1,13 @@
-$button-background-color: $teal;
+$button-background-color: $blue;
 
 .button {
   display: block;
   width: 100%;
   text-align: center;
   border: 0;
+  margin: 0;
+  border-radius: 0;
   background: $button-background-color;
   padding: $space-m;
-  @include type(body-normal);
+  @include type(sans-1-book-s-paragraph-normal);
 }

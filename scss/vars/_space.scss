@@ -1,14 +1,16 @@
-$space-zero: 0px;
-$space-xs: 2px;
-$space-s: 4px;
-$space-m: 8px;
-$space-l: 16px;
-$space-xl: 32px;
-$space-xxl: 64px;
-$space-xxxl: 128px;
+$space-zero: 0rem;
+$space-xxs: 0.1rem;
+$space-xs: 0.2rem;
+$space-s: 0.4rem;
+$space-m: 0.8rem;
+$space-l: 1.6rem;
+$space-xl: 3.2rem;
+$space-xxl: 6.4rem;
+$space-xxxl: 12.8rem;
 
 $spaces: (
   zero: $space-zero,
+  xxs: $space-xxs,
   xs: $space-xs,
   s: $space-s,
   m: $space-m,

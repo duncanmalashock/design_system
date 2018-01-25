@@ -1,60 +1,139 @@
+$avenir-book: 'Avenir LT W01_45 Book1475508';
+$avenir-medium: 'Avenir LT W01_65 Medium1475532';
+$avenir-bold: 'Avenir LT W01_85 Heavy1475544';
+
 $type-faces: (
-  sans-1: (
-    face: ("Lato", arial, sans-serif),
-    weight: 400,
-    top-crop: 9,
-    bottom-crop: 7
+  sans-1-book: (
+    face:         $avenir-book,
+    weight:       400,
+    top-crop:     11,
+    bottom-crop:  12
   ),
-  sans-2: (
-    face: ("Roboto Sans", arial, sans-serif),
-    weight: 800,
-    top-crop: 7,
-    bottom-crop: 10
+  sans-1-medium: (
+    face:         $avenir-medium,
+    weight:       400,
+    top-crop:     11,
+    bottom-crop:  12
+  ),
+  sans-1-bold: (
+    face:         $avenir-bold,
+    weight:       400,
+    top-crop:     11,
+    bottom-crop:  12
   )
 );
 
 $type-sizes: (
-  m: 1rem,
-  l: 1.4rem
+  xxs:   0.6rem,
+  xs:   0.7rem,
+  s:    0.8rem,
+  m:    1.0rem,
+  l:    1.3rem
 );
 
 $type-leadings: (
-  solid: 1.0,
-  tight: 1.15,
-  loose: 1.4
+  solid:  1.0,
+  tight:  1.15,
+  paragraph: 1.4
 );
 
-@function generate-type-setting($face-key, $merge-into-map) {
+$type-trackings: (
+  normal: 0.01rem,
+  tracked-tight: -0.01rem,
+  tracked-out:  0.12rem
+);
+
+@function generate-type-setting($face-key, $size-key, $leading-key, $tracking-key) {
   @return map-merge(
     get($type-faces, $face-key),
-    $merge-into-map
+    (size: get($type-sizes, $size-key),
+    leading: get($type-leadings, $leading-key),
+    tracking: get($type-trackings, $tracking-key),
+    )
   )
 }
 
 $type-settings: (
-  body-normal: (
+  sans-1-medium-xxs-paragraph-normal: (
     generate-type-setting(
-      sans-1,
-      (size: get($type-sizes, m),
-      leading: get($type-leadings, loose)
-      )
+      sans-1-medium,
+      xxs,
+      paragraph,
+      normal
     )
   ),
-  header-normal: (
+  sans-1-bold-xs-solid-trackedout: (
     generate-type-setting(
-      sans-2,
-      (size: get($type-sizes, l),
-      leading: get($type-leadings, tight)
-      )
+      sans-1-bold,
+      xs,
+      solid,
+      tracked-out
+    )
+  ),
+  sans-1-book-xs-paragraph-normal: (
+    generate-type-setting(
+      sans-1-book,
+      xs,
+      paragraph,
+      normal
+    )
+  ),
+  sans-1-book-s-paragraph-normal: (
+    generate-type-setting(
+      sans-1-book,
+      s,
+      paragraph,
+      normal
+    )
+  ),
+  sans-1-book-xs-solid-normal: (
+    generate-type-setting(
+      sans-1-book,
+      xs,
+      solid,
+      normal
+    )
+  ),
+  sans-1-medium-s-paragraph-normal: (
+    generate-type-setting(
+      sans-1-medium,
+      s,
+      paragraph,
+      normal
+    )
+  ),
+  sans-1-medium-m-paragraph-normal: (
+    generate-type-setting(
+      sans-1-medium,
+      m,
+      paragraph,
+      normal
+    )
+  ),
+  sans-1-bold-m-paragraph-normal: (
+    generate-type-setting(
+      sans-1-bold,
+      m,
+      paragraph,
+      tracked-tight
+    )
+  ),
+  sans-1-bold-m-solid-normal: (
+    generate-type-setting(
+      sans-1-bold,
+      m,
+      solid,
+      normal
     )
   )
 );
 
 $type-keys: (
   font-family: "face",
-  font-size: "size",
   font-weight: "weight",
-  line-height: "leading"
+  font-size: "size",
+  line-height: "leading",
+  letter-spacing: "tracking",
 );
 
 @mixin type($setting, $map: $type-settings, $crop:true) {
@@ -69,4 +148,5 @@ $type-keys: (
       $bottom-crop: get($type-setting, "bottom-crop")
     );
   }
+  // border: 1px solid rgba(0,0,0,0.5);
 }

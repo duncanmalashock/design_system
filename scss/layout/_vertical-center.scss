@@ -1,0 +1,15 @@
+.vertical-center {
+  display: inline-block;
+  height: 100%;
+  .vertical-center__height {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    flex-grow: 1;
+    flex-shrink: 1;
+    flex-basis: auto;
+    height: 100%;
+  }
+  .vertical-center__content {
+  }
+}
